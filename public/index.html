@@ -5,23 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zenflow Commercialization Hub</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --zenflow-primary: #2E5BBA;
-            --zenflow-secondary: #4A90E2;
-            --zenflow-accent: #7BC142;
-            --zenflow-dark: #1a2332;
-            --zenflow-light: #f8fbff;
-            --zenflow-grey: #6B7280;
-            --zenflow-success: #10B981;
-            --zenflow-warning: #F59E0B;
-            --zenflow-error: #EF4444;
-            --gradient-primary: linear-gradient(135deg, #2E5BBA 0%, #4A90E2 100%);
-            --gradient-secondary: linear-gradient(135deg, #4A90E2 0%, #7BC142 100%);
-            --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --zenflow-blue: #0066cc;
+            --zenflow-dark-blue: #004d99;
+            --zenflow-light-blue: #e6f2ff;
+            --zenflow-navy: #1a365d;
+            --zenflow-gray: #64748b;
+            --zenflow-light-gray: #f8fafc;
+            --zenflow-white: #ffffff;
+            --zenflow-success: #10b981;
+            --zenflow-warning: #f59e0b;
+            --zenflow-error: #ef4444;
+            --zenflow-gradient: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+            --zenflow-shadow: 0 4px 20px rgba(0, 102, 204, 0.1);
+            --zenflow-shadow-hover: 0 8px 30px rgba(0, 102, 204, 0.15);
         }
 
         * {
@@ -31,335 +30,455 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-            background: var(--gradient-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--zenflow-light-gray);
+            color: var(--zenflow-navy);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Login Screen Styles */
+        .login-container {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--zenflow-dark);
-            line-height: 1.6;
+            background: var(--zenflow-gradient);
+            padding: 20px;
         }
 
-        /* Login Styles */
-        .login-container {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            box-shadow: var(--shadow-large);
+        .login-card {
+            background: var(--zenflow-white);
+            border-radius: 16px;
+            box-shadow: var(--zenflow-shadow-hover);
             padding: 48px;
             width: 100%;
-            max-width: 480px;
+            max-width: 420px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .zenflow-logo {
-            margin-bottom: 32px;
-        }
-
-        .zenflow-logo h1 {
-            font-size: 2.5rem;
+            width: 180px;
+            height: 60px;
+            background: var(--zenflow-gradient);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            color: white;
+            font-size: 24px;
             font-weight: 700;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.5px;
         }
 
-        .zenflow-logo p {
-            color: var(--zenflow-grey);
-            font-size: 1.1rem;
-            margin-top: 8px;
-            font-weight: 500;
+        .login-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--zenflow-navy);
+            margin-bottom: 8px;
         }
 
-        .hub-container {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            box-shadow: var(--shadow-large);
-            padding: 32px;
-            width: 100%;
-            max-width: 1600px;
-            min-height: 90vh;
-            display: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .login-subtitle {
+            color: var(--zenflow-gray);
+            margin-bottom: 32px;
+            font-size: 16px;
         }
 
         .form-group {
             margin-bottom: 24px;
-            position: relative;
+            text-align: left;
         }
 
-        .form-group input {
-            width: 100%;
-            padding: 16px 24px;
-            border: 2px solid #E5E7EB;
-            border-radius: 16px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
+        .form-label {
+            display: block;
             font-weight: 500;
+            color: var(--zenflow-navy);
+            margin-bottom: 8px;
+            font-size: 14px;
         }
 
-        .form-group input:focus {
+        .form-input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            background: var(--zenflow-white);
+        }
+
+        .form-input:focus {
             outline: none;
-            border-color: var(--zenflow-primary);
-            background: white;
-            box-shadow: 0 0 0 4px rgba(46, 91, 186, 0.1);
-            transform: translateY(-1px);
+            border-color: var(--zenflow-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
         }
 
         .login-btn {
             width: 100%;
-            padding: 16px 24px;
-            background: var(--gradient-primary);
+            padding: 16px;
+            background: var(--zenflow-gradient);
             color: white;
             border: none;
-            border-radius: 16px;
+            border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: none;
-            letter-spacing: 0.025em;
+            transition: all 0.2s ease;
+            margin-bottom: 16px;
         }
 
         .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-large);
+            transform: translateY(-1px);
+            box-shadow: var(--zenflow-shadow-hover);
         }
 
-        .error {
+        .demo-credentials {
+            font-size: 12px;
+            color: var(--zenflow-gray);
+            background: var(--zenflow-light-blue);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid var(--zenflow-blue);
+        }
+
+        .error-message {
             color: var(--zenflow-error);
-            margin-top: 12px;
             font-size: 14px;
-            font-weight: 500;
+            margin-top: 8px;
+            text-align: left;
         }
 
-        /* Hub Header */
+        /* Hub Styles */
+        .hub-container {
+            display: none;
+            min-height: 100vh;
+            background: var(--zenflow-light-gray);
+        }
+
         .hub-header {
+            background: var(--zenflow-white);
+            padding: 24px 32px;
+            border-bottom: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 32px;
-            padding-bottom: 24px;
-            border-bottom: 2px solid #F3F4F6;
+            box-shadow: var(--zenflow-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .hub-title {
+        .hub-logo-section {
             display: flex;
             align-items: center;
             gap: 16px;
         }
 
-        .hub-title h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .zenflow-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
+        .hub-logo {
+            width: 120px;
+            height: 40px;
+            background: var(--zenflow-gradient);
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 24px;
+            font-size: 16px;
+            font-weight: 700;
         }
 
-        .user-info {
+        .hub-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--zenflow-navy);
+        }
+
+        .user-section {
             display: flex;
             align-items: center;
             gap: 16px;
+        }
+
+        .user-name {
             font-weight: 500;
-            color: var(--zenflow-grey);
+            color: var(--zenflow-gray);
         }
 
         .logout-btn {
             background: var(--zenflow-error);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 12px;
+            padding: 8px 16px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            font-size: 14px;
             font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            transition: all 0.2s ease;
         }
 
         .logout-btn:hover {
-            background: #DC2626;
+            background: #dc2626;
             transform: translateY(-1px);
-            box-shadow: var(--shadow-medium);
+        }
+
+        .hub-main {
+            padding: 32px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         /* Dashboard Grid */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
             margin-bottom: 32px;
         }
 
         .dashboard-card {
-            background: white;
-            border-radius: 20px;
+            background: var(--zenflow-white);
+            border-radius: 12px;
             padding: 32px;
+            box-shadow: var(--zenflow-shadow);
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #F3F4F6;
-            box-shadow: var(--shadow-soft);
+            border: 1px solid #e2e8f0;
         }
 
         .dashboard-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-large);
-            border-color: var(--zenflow-primary);
-        }
-
-        .dashboard-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
+            box-shadow: var(--zenflow-shadow-hover);
+            border-color: var(--zenflow-blue);
         }
 
         .card-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--gradient-secondary);
-            border-radius: 16px;
+            width: 56px;
+            height: 56px;
+            background: var(--zenflow-light-blue);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 28px;
+            color: var(--zenflow-blue);
+            font-size: 24px;
             margin-bottom: 20px;
         }
 
         .card-title {
-            font-size: 1.25rem;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--zenflow-navy);
             margin-bottom: 12px;
-            color: var(--zenflow-dark);
         }
 
         .card-description {
-            color: var(--zenflow-grey);
-            line-height: 1.6;
-            font-size: 0.95rem;
+            color: var(--zenflow-gray);
+            font-size: 14px;
+            line-height: 1.5;
         }
 
-        /* Content Areas */
-        .content-area {
-            background: var(--zenflow-light);
-            border-radius: 20px;
+        /* KPI Section */
+        .kpi-section {
+            background: var(--zenflow-white);
+            border-radius: 12px;
             padding: 32px;
-            min-height: 500px;
+            box-shadow: var(--zenflow-shadow);
+            margin-bottom: 32px;
+        }
+
+        .kpi-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--zenflow-navy);
+            margin-bottom: 24px;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .kpi-card {
+            text-align: center;
+            padding: 24px;
+            background: var(--zenflow-light-gray);
+            border-radius: 8px;
+            border-left: 4px solid var(--zenflow-blue);
+        }
+
+        .kpi-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--zenflow-blue);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .kpi-label {
+            color: var(--zenflow-gray);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Content Area Styles */
+        .content-area {
             display: none;
+            padding: 32px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .content-area.active {
             display: block;
         }
 
-        .section-title {
-            font-size: 2rem;
-            color: var(--zenflow-dark);
-            margin-bottom: 24px;
+        .content-header {
             display: flex;
             align-items: center;
             gap: 16px;
-            font-weight: 700;
-        }
-
-        .section-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
+            margin-bottom: 32px;
         }
 
         .back-btn {
-            background: var(--zenflow-grey);
+            background: var(--zenflow-gray);
             color: white;
             border: none;
-            padding: 12px 20px;
-            border-radius: 12px;
+            padding: 10px 16px;
+            border-radius: 6px;
             cursor: pointer;
-            margin-bottom: 24px;
-            transition: all 0.3s ease;
+            font-size: 14px;
             font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: #475569;
+            transform: translateY(-1px);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--zenflow-navy);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--zenflow-light-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--zenflow-blue);
+            font-size: 18px;
+        }
+
+        /* Training Modules */
+        .training-module {
+            background: var(--zenflow-white);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--zenflow-shadow);
+            border-left: 4px solid var(--zenflow-success);
+            transition: all 0.2s ease;
+        }
+
+        .training-module:hover {
+            transform: translateX(4px);
+            box-shadow: var(--zenflow-shadow-hover);
+        }
+
+        .module-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--zenflow-navy);
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .back-btn:hover {
-            background: var(--zenflow-dark);
-            transform: translateY(-1px);
+        .module-description {
+            color: var(--zenflow-gray);
+            margin-bottom: 16px;
+            line-height: 1.5;
         }
 
-        /* KPI Cards */
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 24px;
+        .progress-container {
+            margin-bottom: 8px;
         }
 
-        .kpi-card {
-            background: white;
-            padding: 24px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid #F3F4F6;
-            transition: all 0.3s ease;
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
         }
 
-        .kpi-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
+        .progress-fill {
+            height: 100%;
+            background: var(--zenflow-gradient);
+            border-radius: 4px;
+            transition: width 0.3s ease;
         }
 
-        .kpi-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--zenflow-primary);
-            display: block;
-            line-height: 1;
-        }
-
-        .kpi-label {
-            color: var(--zenflow-grey);
-            font-size: 0.9rem;
-            margin-top: 8px;
+        .progress-status {
+            font-size: 12px;
+            color: var(--zenflow-gray);
             font-weight: 500;
+            margin-top: 4px;
         }
 
-        /* Feature Grids */
+        /* Salesforce Integration */
+        .salesforce-panel {
+            background: linear-gradient(135deg, #00a1e0 0%, #0079bc 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            box-shadow: var(--zenflow-shadow);
+        }
+
+        .salesforce-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .salesforce-status {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--zenflow-success);
+            border-radius: 50%;
+        }
+
+        /* Feature Grid */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -367,299 +486,293 @@
             margin-top: 24px;
         }
 
-        .feature-item {
-            background: white;
+        .feature-card {
+            background: var(--zenflow-white);
             padding: 24px;
-            border-radius: 16px;
-            border-left: 4px solid var(--zenflow-primary);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .feature-item:hover {
-            transform: translateX(4px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .feature-item h4 {
-            color: var(--zenflow-dark);
-            margin-bottom: 12px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .feature-item .feature-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--zenflow-primary);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-        }
-
-        /* Specialized Components */
-        .salesforce-integration {
-            background: linear-gradient(135deg, #00a1e0 0%, #0079bc 100%);
-            color: white;
-            padding: 32px;
-            border-radius: 20px;
-            margin-top: 24px;
-            box-shadow: var(--shadow-medium);
-        }
-
-        .calc-container {
-            background: white;
-            padding: 32px;
-            border-radius: 20px;
-            margin-top: 24px;
-            box-shadow: var(--shadow-medium);
-            border: 1px solid #F3F4F6;
-        }
-
-        .calc-input {
-            width: 100%;
-            padding: 14px 16px;
-            margin: 12px 0;
-            border: 2px solid #E5E7EB;
             border-radius: 12px;
+            box-shadow: var(--zenflow-shadow);
+            border-left: 4px solid var(--zenflow-blue);
+            transition: all 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--zenflow-shadow-hover);
+        }
+
+        .feature-title {
             font-size: 16px;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--zenflow-navy);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-description {
+            color: var(--zenflow-gray);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Calculator Styles */
+        .calculator-panel {
+            background: var(--zenflow-white);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: var(--zenflow-shadow);
+            margin-top: 24px;
+        }
+
+        .calculator-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--zenflow-navy);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .calc-input-group {
+            margin-bottom: 16px;
+        }
+
+        .calc-label {
+            display: block;
             font-weight: 500;
-        }
-
-        .calc-input:focus {
-            outline: none;
-            border-color: var(--zenflow-primary);
-            box-shadow: 0 0 0 4px rgba(46, 91, 186, 0.1);
-        }
-
-        .calc-result {
-            background: var(--gradient-secondary);
-            color: white;
-            padding: 20px;
-            border-radius: 16px;
-            margin-top: 16px;
-            font-weight: 600;
-            box-shadow: var(--shadow-medium);
-        }
-
-        .training-module {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            margin: 16px 0;
-            border-left: 4px solid var(--zenflow-success);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .training-module:hover {
-            transform: translateX(4px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .training-module h3 {
-            color: var(--zenflow-dark);
-            margin-bottom: 12px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .training-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--zenflow-success);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            color: var(--zenflow-navy);
+            margin-bottom: 8px;
             font-size: 14px;
         }
 
-        .progress-bar {
+        .calc-input, .calc-select {
             width: 100%;
-            height: 8px;
-            background: #E5E7EB;
-            border-radius: 4px;
-            margin-top: 12px;
-            overflow: hidden;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.2s ease;
         }
 
-        .progress-fill {
-            height: 100%;
-            background: var(--gradient-secondary);
-            border-radius: 4px;
-            transition: width 0.3s ease;
+        .calc-input:focus, .calc-select:focus {
+            outline: none;
+            border-color: var(--zenflow-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
         }
 
-        .collateral-item {
-            background: white;
+        .calc-btn {
+            background: var(--zenflow-gradient);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 16px;
+        }
+
+        .calc-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--zenflow-shadow);
+        }
+
+        .calc-result {
+            background: var(--zenflow-success);
+            color: white;
             padding: 20px;
-            border-radius: 16px;
-            margin: 16px 0;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: 500;
+            display: none;
+        }
+
+        /* Collateral Items */
+        .collateral-item {
+            background: var(--zenflow-white);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 20px;
-            transition: all 0.3s ease;
+            gap: 16px;
+            box-shadow: var(--zenflow-shadow);
+            transition: all 0.2s ease;
             cursor: pointer;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid #F3F4F6;
         }
 
         .collateral-item:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
+            box-shadow: var(--zenflow-shadow-hover);
         }
 
         .file-icon {
             width: 48px;
             height: 48px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
+            background: var(--zenflow-light-blue);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--zenflow-blue);
             font-size: 20px;
         }
 
+        .collateral-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--zenflow-navy);
+            margin-bottom: 4px;
+        }
+
+        .collateral-content p {
+            color: var(--zenflow-gray);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Objection Cards */
         .objection-card {
-            background: white;
-            border-radius: 16px;
+            background: var(--zenflow-white);
+            border-radius: 12px;
             padding: 24px;
-            margin: 20px 0;
+            margin-bottom: 20px;
+            box-shadow: var(--zenflow-shadow);
             border-left: 4px solid var(--zenflow-warning);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-soft);
+            transition: all 0.2s ease;
         }
 
         .objection-card:hover {
             transform: translateX(4px);
-            box-shadow: var(--shadow-medium);
+            box-shadow: var(--zenflow-shadow-hover);
         }
 
-        .objection-title {
-            font-weight: 700;
+        .objection-question {
+            font-size: 16px;
+            font-weight: 600;
             color: var(--zenflow-warning);
             margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
 
         .objection-response {
-            color: var(--zenflow-success);
+            color: var(--zenflow-gray);
             line-height: 1.6;
-            font-weight: 500;
         }
 
+        .objection-response strong {
+            color: var(--zenflow-navy);
+        }
+
+        /* Planning Sections */
         .planning-section {
-            background: white;
-            border-radius: 20px;
+            background: var(--zenflow-white);
+            border-radius: 12px;
             padding: 32px;
-            margin: 24px 0;
-            box-shadow: var(--shadow-medium);
-            border: 1px solid #F3F4F6;
+            margin-bottom: 24px;
+            box-shadow: var(--zenflow-shadow);
         }
 
-        .planning-section h3 {
-            color: var(--zenflow-dark);
+        .planning-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--zenflow-navy);
             margin-bottom: 16px;
-            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
 
-        .territory-map {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 32px;
-            border-radius: 16px;
-            text-align: center;
-            margin: 20px 0;
-            box-shadow: var(--shadow-medium);
-        }
-
-        .competitive-intel {
-            background: white;
-            border-radius: 16px;
+        /* Competitive Intelligence */
+        .competitor-card {
+            background: var(--zenflow-white);
+            border-radius: 12px;
             padding: 24px;
-            margin: 20px 0;
-            border-left: 4px solid var(--zenflow-accent);
-            box-shadow: var(--shadow-soft);
+            margin-bottom: 20px;
+            box-shadow: var(--zenflow-shadow);
+            border-left: 4px solid var(--zenflow-blue);
         }
 
         .competitor-name {
-            font-weight: 700;
-            color: var(--zenflow-accent);
-            margin-bottom: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--zenflow-blue);
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
+            gap: 8px;
+        }
+
+        .competitor-details {
+            display: grid;
             gap: 12px;
-            font-size: 1.1rem;
         }
 
-        .demo-credentials {
-            margin-top: 24px;
-            padding: 20px;
-            background: rgba(46, 91, 186, 0.1);
-            border-radius: 16px;
-            border: 1px solid rgba(46, 91, 186, 0.2);
+        .competitor-detail {
+            display: flex;
+            gap: 12px;
         }
 
-        .demo-credentials p {
-            font-size: 0.9rem;
-            color: var(--zenflow-primary);
+        .detail-label {
             font-weight: 600;
-            text-align: center;
+            color: var(--zenflow-navy);
+            min-width: 140px;
+        }
+
+        .detail-content {
+            color: var(--zenflow-gray);
+            line-height: 1.5;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hub-container {
-                padding: 20px;
-                margin: 10px;
-            }
-            
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .hub-header {
+                padding: 16px 20px;
                 flex-direction: column;
                 gap: 16px;
-                text-align: center;
             }
 
-            .login-container {
-                padding: 32px;
-                margin: 20px;
+            .hub-main {
+                padding: 20px;
+            }
+
+            .content-area {
+                padding: 20px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
             }
 
             .kpi-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .feature-grid {
-                grid-template-columns: 1fr;
+            .login-card {
+                padding: 32px 24px;
+            }
+
+            .calculator-panel {
+                padding: 24px;
             }
         }
 
         /* Animations */
-        @keyframes slideInUp {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -668,234 +781,979 @@
         }
 
         .content-area.active {
-            animation: slideInUp 0.4s ease-out;
+            animation: fadeIn 0.3s ease;
         }
 
-        /* Button Variants */
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        /* Loading States */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid var(--zenflow-blue);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
         }
 
-        .btn-secondary {
-            background: white;
-            color: var(--zenflow-primary);
-            border: 2px solid var(--zenflow-primary);
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-secondary:hover {
-            background: var(--zenflow-primary);
-            color: white;
-            transform: translateY(-1px);
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
 <body>
     <!-- Login Screen -->
     <div class="login-container" id="loginContainer">
-        <div class="zenflow-logo">
-            <h1>Zenflow</h1>
-            <p>Commercialization Hub</p>
-        </div>
-        <form id="loginForm">
-            <div class="form-group">
-                <input type="text" id="username" placeholder="Username" required>
+        <div class="login-card">
+            <div class="zenflow-logo">Zenflow</div>
+            <h1 class="login-title">Commercialization Hub</h1>
+            <p class="login-subtitle">Access your comprehensive launch platform</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="username">Username</label>
+                    <input type="text" id="username" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" class="form-input" required>
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i>
+                    Access Hub
+                </button>
+                
+                <div id="loginError" class="error-message"></div>
+            </form>
+            
+            <div class="demo-credentials">
+                <strong>Demo Access:</strong> admin / zenflow2025
             </div>
-            <div class="form-group">
-                <input type="password" id="password" placeholder="Password" required>
-            </div>
-            <button type="submit" class="login-btn">
-                <i class="fas fa-sign-in-alt"></i>
-                Access Hub
-            </button>
-            <div id="loginError" class="error"></div>
-        </form>
-        <div class="demo-credentials">
-            <p><i class="fas fa-info-circle"></i> Demo: admin / zenflow2025</p>
         </div>
     </div>
 
     <!-- Main Hub -->
     <div class="hub-container" id="hubContainer">
-        <div class="hub-header">
-            <div class="hub-title">
-                <div class="zenflow-icon">
-                    <i class="fas fa-leaf"></i>
-                </div>
-                <h1>Zenflow Commercialization Hub</h1>
+        <header class="hub-header">
+            <div class="hub-logo-section">
+                <div class="hub-logo">Zenflow</div>
+                <h1 class="hub-title">Commercialization Hub</h1>
             </div>
-            <div class="user-info">
-                <span id="welcomeUser">Welcome, User</span>
+            <div class="user-section">
+                <span class="user-name" id="welcomeUser">Welcome, User</span>
                 <button class="logout-btn" onclick="logout()">
                     <i class="fas fa-sign-out-alt"></i>
                     Logout
                 </button>
             </div>
-        </div>
+        </header>
 
-        <!-- Dashboard -->
-        <div id="dashboard" class="content-area active">
-            <div class="dashboard-grid">
-                <div class="dashboard-card" onclick="showSection('salesTraining')">
-                    <div class="card-icon">
-                        <i class="fas fa-user-graduate"></i>
+        <main class="hub-main">
+            <!-- Dashboard -->
+            <div id="dashboard" class="content-area active">
+                <div class="dashboard-grid">
+                    <div class="dashboard-card" onclick="showSection('salesTraining')">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="card-title">Sales Training</h3>
+                        <p class="card-description">Comprehensive training modules, KOL presentations, clinical data, and certification tracking for the Zenflow Spring System</p>
                     </div>
-                    <div class="card-title">Sales Training</div>
-                    <div class="card-description">Comprehensive training modules, KOL presentations, clinical data, and certification tracking for the Zenflow Spring System</div>
+
+                    <div class="dashboard-card" onclick="showSection('salesFunnel')">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="card-title">Sales Funnel Dashboard</h3>
+                        <p class="card-description">Real-time pipeline tracking with Salesforce integration, performance analytics, and conversion metrics</p>
+                    </div>
+
+                    <div class="dashboard-card" onclick="showSection('marketingCollateral')">
+                        <div class="card-icon">
+                            <i class="fas fa-file-medical"></i>
+                        </div>
+                        <h3 class="card-title">Marketing Collateral</h3>
+                        <p class="card-description">Clinical evidence packages, patient education materials, economic value calculators, and interactive demos</p>
+                    </div>
+
+                    <div class="dashboard-card" onclick="showSection('objectionsHandling')">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="card-title">Objections Handling</h3>
+                        <p class="card-description">Proven responses to common objections, competitive positioning strategies, and reimbursement talking points</p>
+                    </div>
+
+                    <div class="dashboard-card" onclick="showSection('salesPlanning')">
+                        <div class="card-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3 class="card-title">Sales Planning Tools</h3>
+                        <p class="card-description">Territory management, account targeting, KOL mapping, and strategic planning resources with Cook Medical alignment</p>
+                    </div>
+
+                    <div class="dashboard-card" onclick="showSection('competitiveIntel')">
+                        <div class="card-icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h3 class="card-title">Competitive Intelligence</h3>
+                        <p class="card-description">Market analysis, competitor profiles, positioning insights against UroLift, Rezūm, and Aquablation</p>
+                    </div>
                 </div>
 
-                <div class="dashboard-card" onclick="showSection('salesFunnel')">
-                    <div class="card-icon">
+                <div class="kpi-section">
+                    <h2 class="kpi-title">Key Performance Indicators</h2>
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <span class="kpi-value">156</span>
+                            <div class="kpi-label">Active Prospects</div>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-value">23</span>
+                            <div class="kpi-label">Demo Requests</div>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-value">$1.2M</span>
+                            <div class="kpi-label">Pipeline Value</div>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-value">87%</span>
+                            <div class="kpi-label">Training Completion</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sales Training Section -->
+            <div id="salesTraining" class="content-area">
+                <div class="content-header">
+                    <button class="back-btn" onclick="showDashboard()">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        Sales Training Hub
+                    </h2>
+                </div>
+
+                <div class="training-module">
+                    <h3 class="module-title">
+                        <i class="fas fa-stethoscope"></i>
+                        Zenflow Spring System Overview
+                    </h3>
+                    <p class="module-description">Complete product training including mechanism of action, clinical benefits, procedural workflow, and patient selection criteria</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <div class="progress-status">Status: Completed</div>
+                    </div>
+                </div>
+
+                <div class="training-module">
+                    <h3 class="module-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Clinical Evidence & Outcomes
+                    </h3>
+                    <p class="module-description">BREEZE study results, safety data, efficacy metrics, and comparative effectiveness vs. competitors including preservation of sexual function</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                        <div class="progress-status">Status: 85% Complete</div>
+                    </div>
+                </div>
+
+                <div class="training-module">
+                    <h3 class="module-title">
+                        <i class="fas fa-users"></i>
+                        KOL Engagement Strategies
+                    </h3>
+                    <p class="module-description">Key opinion leader identification, relationship building, advocacy development, and leveraging Cook Medical's established relationships</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                        <div class="progress-status">Status: 75% Complete</div>
+                    </div>
+                </div>
+
+                <div class="training-module">
+                    <h3 class="module-title">
+                        <i class="fas fa-dollar-sign"></i>
+                        Economic Value Proposition
+                    </h3>
+                    <p class="module-description">Reimbursement landscape, CPT coding strategies, financial benefits for practices, and payer coverage development</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                        <div class="progress-status">Status: 60% Complete</div>
+                    </div>
+                </div>
+
+                <div class="training-module">
+                    <h3 class="module-title">
+                        <i class="fas fa-handshake"></i>
+                        Cook Medical Partnership Leverage
+                    </h3>
+                    <p class="module-description">Utilizing Cook's network, established relationships, global distribution, and proven commercialization processes</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%;"></div>
+                        </div>
+                        <div class="progress-status">Status: 90% Complete</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sales Funnel Dashboard -->
+            <div id="salesFunnel" class="content-area">
+                <div class="content-header">
+                    <button class="back-btn" onclick="showDashboard()">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        Sales Funnel Dashboard
+                    </h2>
+                </div>
+
+                <div class="salesforce-panel">
+                    <h3 class="salesforce-title">
+                        <i class="fab fa-salesforce"></i>
+                        Salesforce CRM Integration
+                    </h3>
+                    <p>Real-time synchronization with Salesforce for comprehensive lead management, opportunity tracking, and performance analytics</p>
+                    <div class="salesforce-status">
+                        <div class="status-item">
+                            <div class="status-indicator"></div>
+                            <strong>API Status:</strong> Connected
+                        </div>
+                        <div class="status-item">
+                            <div class="status-indicator"></div>
+                            <strong>Last Sync:</strong> 2 minutes ago
+                        </div>
+                        <div class="status-item">
+                            <div class="status-indicator"></div>
+                            <strong>Records:</strong> 1,247 contacts
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4 class="feature-title">
+                            <i class="fas fa-bullseye"></i>
+                            Lead Qualification
+                        </h4>
+                        <p class="feature-description">Automated scoring based on practice size, BPH procedure volume, and decision maker engagement levels</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4 class="feature-title">
+                            <i class="fas fa-calendar-check"></i>
+                            Demo Scheduling
+                        </h4>
+                        <p class="feature-description">Integrated calendar system for procedure demonstrations, training sessions, and follow-up appointments</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4 class="feature-title">
+                            <i class="fas fa-analytics"></i>
+                            Pipeline Analytics
+                        </h4>
+                        <p class="feature-description">Real-time conversion metrics, stage velocity analysis, and revenue forecasting with market penetration tracking</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4 class="feature-title">
+                            <i class="fas fa-sync-alt"></i>
+                            Follow-up Automation
+                        </h4>
+                        <p class="feature-description">Automated nurturing sequences to guide prospects through the adoption journey from interest to first case</p>
+                    </div>
+                </div>
+
+                <div class="calculator-panel">
+                    <h3 class="calculator-title">
+                        <i class="fas fa-calculator"></i>
+                        Territory Performance Calculator
+                    </h3>
+                    <div class="calc-input-group">
+                        <label class="calc-label" for="accountsVisited">Accounts Visited This Month</label>
+                        <input type="number" class="calc-input" id="accountsVisited" placeholder="Enter number of accounts visited">
+                    </div>
+                    <div class="calc-input-group">
+                        <label class="calc-label" for="demosCompleted">Demos Completed</label>
+                        <input type="number" class="calc-input" id="demosCompleted" placeholder="Enter number of demos completed">
+                    </div>
+                    <div class="calc-input-group">
+                        <label class="calc-label" for="trainingSessions">Training Sessions Conducted</label>
+                        <input type="number" class="calc-input" id="trainingSessions" placeholder="Enter number of training sessions">
+                    </div>
+                    <button class="calc-btn" onclick="calculatePerformance()">Calculate Performance Metrics</button>
+                    <div id="performanceResult" class="calc-result"></div>
+                </div>
+            </div>
+
+            <!-- Marketing Collateral -->
+            <div id="marketingCollateral" class="content-area">
+                <div class="content-header">
+                    <button class="back-btn" onclick="showDashboard()">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="fas fa-file-medical"></i>
+                        </div>
+                        Marketing Collateral Library
+                    </h2>
+                </div>
+
+                <div class="calculator-panel">
+                    <h3 class="calculator-title">
+                        <i class="fas fa-dollar-sign"></i>
+                        Economic Value Calculator
+                    </h3>
+                    <p style="color: var(--zenflow-gray); margin-bottom: 20px;">Calculate financial impact for urology practices based on their payer mix and expected procedure volume</p>
+                    <div class="calc-input-group">
+                        <label class="calc-label" for="medicareRate">Medicare Reimbursement Rate ($)</label>
+                        <input type="number" class="calc-input" id="medicareRate" placeholder="Enter Medicare reimbursement rate">
+                    </div>
+                    <div class="calc-input-group">
+                        <label class="calc-label" for="casesPerMonth">Expected Cases Per Month</label>
+                        <input type="number" class="calc-input" id="casesPerMonth" placeholder="Enter expected monthly case volume">
+                    </div>
+                    <div class="calc-input-group">
+                        <label class="calc-label" for="medicarePercent">Medicare Patient Percentage (%)</label>
+                        <input type="number" class="calc-input" id="medicarePercent" placeholder="Enter percentage (0-100)">
+                    </div>
+                    <button class="calc-btn" onclick="calculateROI()">Calculate Revenue Impact</button>
+                    <div id="roiResult" class="calc-result"></div>
+                </div>
+
+                <div class="collateral-item">
+                    <div class="file-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="collateral-content">
+                        <h4>Mobile Sales Application</h4>
+                        <p>Tablet-based presentation platform with animated procedure demonstrations, interactive 3D Spring System models, and clinical outcomes data</p>
+                    </div>
+                </div>
+
+                <div class="collateral-item">
+                    <div class="file-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="card-title">Sales Funnel Dashboard</div>
-                    <div class="card-description">Real-time pipeline tracking with Salesforce integration, performance analytics, and territory management</div>
+                    <div class="collateral-content">
+                        <h4>Clinical Evidence Package</h4>
+                        <p>Comprehensive BREEZE study results, safety data, comparative effectiveness research, and long-term outcome analyses</p>
+                    </div>
                 </div>
 
-                <div class="dashboard-card" onclick="showSection('marketingCollateral')">
-                    <div class="card-icon">
-                        <i class="fas fa-presentation"></i>
+                <div class="collateral-item">
+                    <div class="file-icon">
+                        <i class="fas fa-video"></i>
                     </div>
-                    <div class="card-title">Marketing Collateral</div>
-                    <div class="card-description">Interactive demos, clinical evidence, patient education materials, and economic value calculators</div>
+                    <div class="collateral-content">
+                        <h4>Procedure Demonstration Videos</h4>
+                        <p>High-quality procedural videos showing Spring System deployment, patient testimonials, and physician interviews</p>
+                    </div>
                 </div>
 
-                <div class="dashboard-card" onclick="showSection('objectionsHandling')">
-                    <div class="card-icon">
-                        <i class="fas fa-shield-halved"></i>
+                <div class="collateral-item">
+                    <div class="file-icon">
+                        <i class="fas fa-user-md"></i>
                     </div>
-                    <div class="card-title">Objections Handling</div>
-                    <div class="card-description">Common objections, proven responses, and competitive positioning strategies against UroLift, Rezūm, and Aquablation</div>
+                    <div class="collateral-content">
+                        <h4>Patient Education Materials</h4>
+                        <p>Patient-friendly brochures, website content, consultation guides, and pre/post-procedure instructions</p>
+                    </div>
                 </div>
 
-                <div class="dashboard-card" onclick="showSection('salesPlanning')">
-                    <div class="card-icon">
-                        <i class="fas fa-map-location-dot"></i>
+                <div class="collateral-item">
+                    <div class="file-icon">
+                        <i class="fas fa-search"></i>
                     </div>
-                    <div class="card-title">Sales Planning Tools</div>
-                    <div class="card-description">Territory management, account targeting, KOL mapping, and strategic planning resources with Cook Medical alignment</div>
-                </div>
-
-                <div class="dashboard-card" onclick="showSection('competitiveIntel')">
-                    <div class="card-icon">
-                        <i class="fas fa-search-dollar"></i>
+                    <div class="collateral-content">
+                        <h4>EMR Patient Identification Tools</h4>
+                        <p>Algorithms and checklists to help practices identify eligible BPH patients for Zenflow consultation and treatment</p>
                     </div>
-                    <div class="card-title">Competitive Intelligence</div>
-                    <div class="card-description">Market analysis, competitor profiles, pricing strategies, and positioning insights for the BPH treatment landscape</div>
                 </div>
             </div>
 
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <span class="kpi-value">156</span>
-                    <div class="kpi-label">Active Prospects</div>
+            <!-- Objections Handling -->
+            <div id="objectionsHandling" class="content-area">
+                <div class="content-header">
+                    <button class="back-btn" onclick="showDashboard()">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        Objections Handling Guide
+                    </h2>
                 </div>
-                <div class="kpi-card">
-                    <span class="kpi-value">23</span>
-                    <div class="kpi-label">Demo Requests</div>
-                </div>
-                <div class="kpi-card">
-                    <span class="kpi-value">$1.2M</span>
-                    <div class="kpi-label">Pipeline Value</div>
-                </div>
-                <div class="kpi-card">
-                    <span class="kpi-value">87%</span>
-                    <div class="kpi-label">Training Completion</div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Sales Training Section -->
-        <div id="salesTraining" class="content-area">
-            <button class="back-btn" onclick="showDashboard()">
-                <i class="fas fa-arrow-left"></i>
-                Back to Dashboard
-            </button>
-            <div class="section-title">
-                <div class="section-icon">
-                    <i class="fas fa-user-graduate"></i>
-                </div>
-                Sales Training Hub
-            </div>
-
-            <div class="training-module">
-                <h3>
-                    <div class="training-icon">
-                        <i class="fas fa-leaf"></i>
+                <div class="objection-card">
+                    <div class="objection-question">
+                        <i class="fas fa-question-circle"></i>
+                        "How does Zenflow compare to UroLift?"
                     </div>
-                    Zenflow Spring System Overview
-                </h3>
-                <p>Complete product training including mechanism of action, clinical benefits, and procedural workflow. Learn how the nitinol spring provides gentle, effective BPH treatment.</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="objection-response">
+                        <strong>Response:</strong> "Excellent question! While UroLift requires multiple implants with anatomical limitations, Zenflow uses a single nitinol spring that adapts to any prostate anatomy. Our BREEZE study data shows significant symptom improvement with a simpler, more predictable procedure that preserves sexual function."
+                    </div>
                 </div>
-                <small>Status: Completed</small>
+
+                <div class="objection-card">
+                    <div class="objection-question">
+                        <i class="fas fa-money-bill-wave"></i>
+                        "What about reimbursement coverage?"
+                    </div>
+                    <div class="objection-response">
+                        <strong>Response:</strong> "Zenflow has established CPT coding pathways and growing payer coverage. With Cook Medical's experienced market access team, we're actively expanding coverage with major insurers. Here's our current coverage map and typical reimbursement rates for your region..."
+                    </div>
+                </div>
+
+                <div class="objection-card">
+                    <div class="objection-question">
+                        <i class="fas fa-clock"></i>
+                        "I don't have time for extensive training."
+                    </div>
+                    <div class="objection-response">
+                        <strong>Response:</strong> "I completely understand your time constraints. Our training is streamlined to just 2 focused hours with hands-on simulation practice. Plus, Cook's clinical support team provides proctoring for your first cases to ensure smooth implementation and immediate success."
+                    </div>
+                </div>
+
+                <div class="objection-card">
+                    <div class="objection-question">
+                        <i class="fas fa-hospital"></i>
+                        "Our facility committee needs to approve new technologies."
+                    </div>
+                    <div class="objection-response">
+                        <strong>Response:</strong> "Absolutely! I can provide a complete value analysis committee presentation including clinical evidence, economic impact data, implementation timeline, and physician references. Cook Medical is already an approved vendor at most major health systems, which streamlines the approval process."
+                    </div>
+                </div>
+
+                <div class="objection-card">
+                    <div class="objection-question">
+                        <i class="fas fa-chart-area"></i>
+                        "Show me long-term outcome data."
+                    </div>
+                    <div class="objection-response">
+                        <strong>Response:</strong> "Here's our comprehensive clinical data package with follow-up studies and durability analysis. Dr. [KOL name] at [institution] has excellent long-term results with the Spring System. Would you like me to arrange a peer-to-peer conversation to discuss their experience?"
+                    </div>
+                </div>
             </div>
 
-            <div class="training-module">
-                <h3>
-                    <div class="training-icon">
+            <!-- Sales Planning Tools -->
+            <div id="salesPlanning" class="content-area">
+                <div class="content-header">
+                    <button class="back-btn" onclick="showDashboard()">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        Sales Planning & Territory Management
+                    </h2>
+                </div>
+
+                <div class="planning-section">
+                    <h3 class="planning-title">
+                        <i class="fas fa-bullseye"></i>
+                        Target Account Strategy
+                    </h3>
+                    <p style="color: var(--zenflow-gray); margin-bottom: 20px;">Strategic focus on high-volume BPH centers with established Cook Medical relationships and early adopter characteristics</p>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4 class="feature-title">
+                                <i class="fas fa-university"></i>
+                                Segment A: Academic Centers
+                            </h4>
+                            <p class="feature-description">KOL-driven, research-focused institutions for early adoption, clinical evidence generation, and peer advocacy development</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title">
+                                <i class="fas fa-clinic-medical"></i>
+                                Segment B: High-Volume Practices
+                            </h4>
+                            <p class="feature-description">Community urology groups performing 100+ BPH procedures annually with established Cook Medical relationships</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="planning-section">
+                    <h3 class="planning-title">
                         <i class="fas fa-chart-bar"></i>
+                        Sales Metrics & KPIs
+                    </h3>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4 class="feature-title">
+                                <i class="fas fa-repeat"></i>
+                                Utilization Focus
+                            </h4>
+                            <p class="feature-description">Track actual device usage and sustained adoption, not just initial orders. Reward representatives for accounts with consistent utilization.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title">
+                                <i class="fas fa-check-circle"></i>
+                                First Case Success
+                            </h4>
+                            <p class="feature-description">Monitor success rates of initial procedures, physician satisfaction scores, and patient outcomes to ensure positive experiences.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title">
+                                <i class="fas fa-star"></i>
+                                Reference Site Development
+                            </h4>
+                            <p class="feature-description">Incentivize securing key advocate physicians, positive testimonials, and reference sites for peer-to-peer education.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title">
+                                <i class="fas fa-graduation-cap"></i>
+                                Training Effectiveness
+                            </h4>
+                            <p class="feature-description">Track training completion rates, post-training physician confidence levels, and time to first independent case.</p>
+                        </div>
                     </div>
-                    Clinical Evidence & Outcomes
-                </h3>
-                <p>BREEZE study results, safety data, efficacy metrics, and comparative effectiveness vs. competitors. 46% IPSS reduction at 12 months with preservation of sexual function.</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 85%;"></div>
                 </div>
-                <small>Status: 85% Complete</small>
+
+                <div class="calculator-panel">
+                    <h3 class="calculator-title">
+                        <i class="fas fa-sort-amount-up"></i>
+                        Account Prioritization Tool
+                    </h3>
+                    <div class="calc-input-group">
+                        <label class="calc-label" for="annualBphCases">Annual BPH Procedures</label>
+                        <input type="number" class="calc-input" id="annualBphCases" placeholder="Enter annual BPH procedure volume">
+                    </div>
+                    <div class="calc-input-group">
+                        <label class="calc-label" for="physicianCount">Number of Urologists</label>
+                        <input type="number" class="calc-input" id="physicianCount" placeholder="Enter number of urologists in practice">
+                    </div>
+                    <div class="calc-input-group">
+                        <label class="calc-label" for="cookRelationship">Cook Medical Relationship Status</label>
+                        <select class="calc-select" id="cookRelationship">
+                            <option value="">Select relationship strength</option>
+                            <option value="strong">Strong Existing Relationship</option>
+                            <option value="moderate">Moderate Relationship</option>
+                            <option value="weak">Limited Relationship</option>
+                            <option value="none">No Existing Relationship</option>
+                        </select>
+                    </div>
+                    <button class="calc-btn" onclick="calculateAccountPriority()">Calculate Priority Score</button>
+                    <div id="priorityResult" class="calc-result"></div>
+                </div>
             </div>
 
-            <div class="training-module">
-                <h3>
-                    <div class="training-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    KOL Engagement Strategies
-                </h3>
-                <p>Key opinion leader identification, relationship building, and advocacy development. Leverage Cook Medical's existing KOL network for faster adoption.</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 75%;"></div>
+            <!-- Competitive Intelligence -->
+            <div id="competitiveIntel" class="content-area">
+                <div class="content-header">
+                    <button class="back-btn" onclick="showDashboard()">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                    <h2 class="section-title">
+                        <div class="section-icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        Competitive Intelligence Center
+                    </h2>
                 </div>
-                <small>Status: 75% Complete</small>
-            </div>
 
-            <div class="training-module">
-                <h3>
-                    <div class="training-icon">
-                        <i class="fas fa-dollar-sign"></i>
+                <div class="competitor-card">
+                    <div class="competitor-name">
+                        <i class="fas fa-bullseye"></i>
+                        UroLift (Teleflex)
                     </div>
-                    Economic Value Proposition
-                </h3>
-                <p>Reimbursement landscape, coding strategies, and financial benefits for practices. Learn to calculate ROI and present compelling economic arguments.</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 60%;"></div>
+                    <div class="competitor-details">
+                        <div class="competitor-detail">
+                            <div class="detail-label">Market Position:</div>
+                            <div class="detail-content">Market leader with 35-40% share, established DTC marketing, and broad payer coverage</div>
+                        </div>
+                        <div class="competitor-detail">
+                            <div class="detail-label">Key Differentiators:</div>
+                            <div class="detail-content">Single spring vs multiple implants, no prostate size limitations, simpler deployment procedure</div>
+                        </div>
+                        <div class="competitor-detail">
+                            <div class="detail-label">Pricing Strategy:</div>
+                            <div class="detail-content">Premium pricing with established reimbursement pathways and hospital contracts</div>
+                        </div>
+                        <div class="competitor-detail">
+                            <div class="detail-label">Response Strategy:</div>
+                            <div class="detail-content">Emphasize procedural simplicity, universal applicability, and immediate symptom relief</div>
+                        </div>
+                    </div>
                 </div>
-                <small>Status: 60% Complete</small>
-            </div>
 
-            <div class="training-module">
-                <h3>
-                    <div class="training-icon">
+                <div class="competitor-card">
+                    <div class="competitor-name">
+                        <i class="fas fa-fire"></i>
+                        Rezūm (Boston Scientific)
+                    </div>
+                    <div class="competitor-details">
+                        <div class="competitor-detail">
+                            <div class="detail-label">Market Position:</div>
+                            <div class="detail-content">30-35% share with steam therapy, strong clinical evidence, office-based positioning</div>
+                        </div>
+                        <div class="competitor-detail">
+                            <div class="detail-label">Key Differentiators:</div>
+                            <div class="detail-content">Immediate vs delayed results, no tissue destruction vs thermal ablation, reversible treatment</div>
+                        </div>
+                        <div class="competitor-detail">
+                            <div class="detail-label">Pricing Strategy:</div>
+                            <div class="detail-content">Competitive procedure-based pricing with disposable delivery system</div>
+                        </div>
+                        <div class="competitor-detail">
+                            <div class="detail-label">Response Strategy:</div>
+                            <div class="detail-content">Highlight immediate symptom relief, preservation of anatomy, and reversibility</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="competitor-card">
+                    <div class="competitor-name">
+                        <i class="fas fa-robot"></i>
+                        Aquablation (PROCEPT BioRobotics)
+                    </div>
+                    <div class="competitor-details">
+                        <div class="competitor-detail">
+                            <div class="detail-label">Market Position:</div>
+                            <div class="detail-content">Robotic precision for larger prostates, hospital-based procedures, emerging technology</div>
+                        </div>
+                        <div class="competitor-detail">
+                            <div class="detail-label">Key Differentiators:</div>
+                            <div class="detail-content">Office vs OR setting, minimal vs extensive training required, broader patient eligibility</div>
+                        </div>
+                        <div class="competitor-detail">
+                            <div class="detail-label">Pricing Strategy:</div>
+                            <div class="detail-content">High-value robotic procedure pricing with capital equipment requirements</div>
+                        </div>
+                        <div class="competitor-detail">
+                            <div class="detail-label">Response Strategy:</div>
+                            <div class="detail-content">Focus on office convenience, accessibility, and cost-effectiveness</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="planning-section">
+                    <h3 class="planning-title">
+                        <i class="fas fa-chart-pie"></i>
+                        Market Share Analysis & Projections
+                    </h3>
+                    <p style="color: var(--zenflow-gray); margin-bottom: 20px;"><strong>Target:</strong> 10-15% market share within 5 years through strategic Cook Medical partnership</p>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4 class="feature-title">
+                                <i class="fas fa-seedling"></i>
+                                Year 1-2: Foundation
+                            </h4>
+                            <p class="feature-description">Establish KOL advocates, build clinical evidence base, secure key reference sites, and develop reimbursement pathways</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                                Year 3-4: Expansion
+                            </h4>
+                            <p class="feature-description">Scale with Cook's network, expand payer coverage, increase procedure volumes, and enter new geographic markets</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title">
+                                <i class="fas fa-trophy"></i>
+                                Year 5+: Market Leadership
+                            </h4>
+                            <p class="feature-description">Geographic penetration, indication expansion, international markets, and market leadership in key segments</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calculator-panel">
+                    <h3 class="calculator-title">
+                        <i class="fas fa-chess"></i>
+                        Competitive Positioning Tool
+                    </h3>
+                    <div class="calc-input-group">
+                        <label class="calc-label" for="competitorType">Select Competitor</label>
+                        <select class="calc-select" id="competitorType">
+                            <option value="">Choose competitor for positioning</option>
+                            <option value="urolift">UroLift</option>
+                            <option value="rezum">Rezūm</option>
+                            <option value="aquablation">Aquablation</option>
+                            <option value="turp">TURP</option>
+                        </select>
+                    </div>
+                    <div class="calc-input-group">
+                        <label class="calc-label" for="physicianConcern">Physician Concern</label>
+                        <select class="calc-select" id="physicianConcern">
+                            <option value="">Select primary concern</option>
+                            <option value="efficacy">Efficacy/Outcomes</option>
+                            <option value="safety">Safety Profile</option>
+                            <option value="procedure">Procedure Complexity</option>
+                            <option value="training">Training Requirements</option>
+                            <option value="reimbursement">Reimbursement</option>
+                        </select>
+                    </div>
+                    <button class="calc-btn" onclick="generatePositioning()">Generate Positioning Message</button>
+                    <div id="positioningResult" class="calc-result"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Login functionality
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === 'admin' && password === 'zenflow2025') {
+                document.getElementById('loginContainer').style.display = 'none';
+                document.getElementById('hubContainer').style.display = 'block';
+                document.getElementById('welcomeUser').textContent = `Welcome, ${username}`;
+            } else {
+                document.getElementById('loginError').textContent = 'Invalid credentials. Please check your username and password.';
+            }
+        });
+
+        // Navigation functions
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-area').forEach(area => {
+                area.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function showDashboard() {
+            document.querySelectorAll('.content-area').forEach(area => {
+                area.classList.remove('active');
+            });
+            document.getElementById('dashboard').classList.add('active');
+        }
+
+        function logout() {
+            document.getElementById('hubContainer').style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'flex';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('loginError').textContent = '';
+        }
+
+        // Calculator functions
+        function calculateROI() {
+            const medicareRate = parseFloat(document.getElementById('medicareRate').value) || 0;
+            const casesPerMonth = parseFloat(document.getElementById('casesPerMonth').value) || 0;
+            const medicarePercent = parseFloat(document.getElementById('medicarePercent').value) || 0;
+            
+            if (medicareRate && casesPerMonth) {
+                const monthlyRevenue = (medicareRate * casesPerMonth * medicarePercent / 100);
+                const annualRevenue = monthlyRevenue * 12;
+                const additionalRevenue = annualRevenue * 0.85; // Assuming 15% operational costs
+                
+                document.getElementById('roiResult').innerHTML = `
+                    <strong>Financial Impact Analysis:</strong><br>
+                    Monthly Additional Revenue: ${monthlyRevenue.toLocaleString()}<br>
+                    Annual Additional Revenue: ${annualRevenue.toLocaleString()}<br>
+                    Net Annual Benefit: ${additionalRevenue.toLocaleString()}<br>
+                    <em>Based on ${medicarePercent}% Medicare patients at ${medicareRate} reimbursement rate</em>
+                `;
+                document.getElementById('roiResult').style.display = 'block';
+            }
+        }
+
+        function calculatePerformance() {
+            const accounts = parseFloat(document.getElementById('accountsVisited').value) || 0;
+            const demos = parseFloat(document.getElementById('demosCompleted').value) || 0;
+            const training = parseFloat(document.getElementById('trainingSessions').value) || 0;
+            
+            if (accounts && demos) {
+                const conversionRate = (demos / accounts * 100).toFixed(1);
+                const trainingRatio = (training / demos).toFixed(1);
+                let performance = 'Needs Improvement';
+                
+                if (conversionRate > 25 && trainingRatio > 0.8) performance = 'Excellent';
+                else if (conversionRate > 15 && trainingRatio > 0.5) performance = 'Very Good';
+                else if (conversionRate > 10) performance = 'Good';
+                
+                document.getElementById('performanceResult').innerHTML = `
+                    <strong>Territory Performance Summary:</strong><br>
+                    Demo Conversion Rate: ${conversionRate}%<br>
+                    Training-to-Demo Ratio: ${trainingRatio}<br>
+                    Overall Performance: ${performance}<br>
+                    <em>Target Benchmarks: >20% conversion rate, >0.7 training ratio</em>
+                `;
+                document.getElementById('performanceResult').style.display = 'block';
+            }
+        }
+
+        function calculateAccountPriority() {
+            const bphCases = parseFloat(document.getElementById('annualBphCases').value) || 0;
+            const physicians = parseFloat(document.getElementById('physicianCount').value) || 0;
+            const relationship = document.getElementById('cookRelationship').value;
+            
+            if (bphCases && physicians && relationship) {
+                let score = 0;
+                
+                // Volume scoring (40 points max)
+                if (bphCases > 200) score += 40;
+                else if (bphCases > 100) score += 30;
+                else if (bphCases > 50) score += 20;
+                else score += 10;
+                
+                // Physician count scoring (25 points max)
+                if (physicians > 5) score += 25;
+                else if (physicians > 3) score += 20;
+                else if (physicians > 1) score += 15;
+                else score += 10;
+                
+                // Relationship scoring (35 points max)
+                switch(relationship) {
+                    case 'strong': score += 35; break;
+                    case 'moderate': score += 25; break;
+                    case 'weak': score += 15; break;
+                    case 'none': score += 5; break;
+                }
+                
+                let priority = 'Low Priority';
+                let action = 'Annual review and monitoring';
+                
+                if (score >= 80) {
+                    priority = 'High Priority';
+                    action = 'Immediate engagement and frequent touch points';
+                } else if (score >= 60) {
+                    priority = 'Medium-High Priority';
+                    action = 'Quarterly engagement and relationship building';
+                } else if (score >= 40) {
+                    priority = 'Medium Priority';
+                    action = 'Semi-annual contact and opportunity assessment';
+                }
+                
+                document.getElementById('priorityResult').innerHTML = `
+                    <strong>Account Priority Analysis:</strong><br>
+                    Priority Score: ${score}/100<br>
+                    Priority Level: ${priority}<br>
+                    Recommended Action: ${action}<br>
+                    <em>Scoring: Volume (40pts) + Physicians (25pts) + Cook Relationship (35pts)</em>
+                `;
+                document.getElementById('priorityResult').style.display = 'block';
+            }
+        }
+
+        function generatePositioning() {
+            const competitor = document.getElementById('competitorType').value;
+            const concern = document.getElementById('physicianConcern').value;
+            
+            const positioningMessages = {
+                'urolift-efficacy': 'While UroLift requires multiple implants with variable outcomes based on anatomy, Zenflow\'s single spring provides consistent, predictable results across all prostate sizes and configurations, with immediate symptom relief.',
+                'urolift-safety': 'Zenflow eliminates the risk of implant migration, malposition, or interference that can occur with multiple UroLift implants, offering a safer single-device approach.',
+                'urolift-procedure': 'Zenflow simplifies the procedure to a single spring deployment versus multiple implant placements, reducing procedure time, complexity, and potential for complications.',
+                'urolift-training': 'Zenflow requires minimal training compared to UroLift\'s multiple implant placement technique, with faster physician competency and confidence development.',
+                'urolift-reimbursement': 'Zenflow offers competitive reimbursement with simplified coding and fewer devices per procedure, potentially improving practice economics.',
+                
+                'rezum-efficacy': 'Unlike Rezūm\'s delayed results requiring weeks of healing and potential retreatment, Zenflow provides immediate symptom relief without tissue destruction or inflammation.',
+                'rezum-safety': 'Zenflow avoids the thermal injury, tissue necrosis, and prolonged inflammation associated with steam therapy, offering a gentler, reversible treatment approach.',
+                'rezum-procedure': 'Zenflow\'s single spring deployment is faster and more predictable than Rezūm\'s multiple injection protocol, with immediate procedural completion.',
+                'rezum-training': 'Zenflow\'s straightforward deployment technique requires less training than Rezūm\'s steam injection protocols and thermal dosimetry considerations.',
+                'rezum-reimbursement': 'Zenflow provides comparable reimbursement with immediate results, potentially improving patient satisfaction and reducing follow-up requirements.',
+                
+                'aquablation-efficacy': 'Zenflow offers comparable efficacy to Aquablation but in an office setting without general anesthesia, robotics, or hospital infrastructure requirements.',
+                'aquablation-safety': 'Zenflow eliminates the bleeding risks and anesthesia complications associated with Aquablation\'s water jet resection approach.',
+                'aquablation-procedure': 'Zenflow can be performed in the office versus Aquablation\'s requirement for OR, general anesthesia, and robotic equipment.',
+                'aquablation-training': 'Zenflow requires minimal training compared to Aquablation\'s complex robotic system and extensive physician certification requirements.',
+                'aquablation-reimbursement': 'Zenflow offers office-based reimbursement without the capital equipment costs and facility requirements of Aquablation.',
+                
+                'turp-efficacy': 'Zenflow provides comparable symptom relief to TURP while preserving sexual function and eliminating the risks of tissue removal procedures.',
+                'turp-safety': 'Zenflow eliminates the bleeding, incontinence, retrograde ejaculation, and anesthesia risks associated with traditional tissue removal procedures.',
+                'turp-procedure': 'Zenflow can be performed in the office under local anesthesia versus TURP\'s requirement for hospital-based surgery and general anesthesia.',
+                'turp-training': 'Zenflow\'s minimally invasive technique requires less training than complex resection procedures and endoscopic skills.',
+                'turp-reimbursement': 'Zenflow offers competitive office-based reimbursement without hospital costs, anesthesia fees, or extended recovery requirements.'
+            };
+            
+            if (competitor && concern) {
+                const key = `${competitor}-${concern}`;
+                const message = positioningMessages[key] || 'Zenflow offers a unique minimally invasive approach with proven clinical benefits, simplified implementation, and superior patient experience compared to existing alternatives.';
+                
+                document.getElementById('positioningResult').innerHTML = `
+                    <strong>Competitive Positioning Message:</strong><br><br>
+                    ${message}<br><br>
+                    <em>Support this message with clinical data, case studies, KOL testimonials, and Cook Medical\'s established relationships for maximum impact.</em>
+                `;
+                document.getElementById('positioningResult').style.display = 'block';
+            }
+        }
+
+        // Initialize dashboard on load
+        document.addEventListener('DOMContentLoaded', function() {
+            showDashboard();
+        });
+
+        // Add some interactive enhancements
+        document.querySelectorAll('.dashboard-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-6px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-4px)';
+            });
+        });
+
+        // Add loading states for calculators
+        function addLoadingState(buttonId) {
+            const button = document.getElementById(buttonId);
+            if (button) {
+                button.classList.add('loading');
+                setTimeout(() => {
+                    button.classList.remove('loading');
+                }, 1000);
+            }
+        }
+
+        // Enhanced form validation
+        function validateCalculatorInputs(requiredFields) {
+            return requiredFields.every(fieldId => {
+                const field = document.getElementById(fieldId);
+                const value = field ? field.value.trim() : '';
+                return value !== '' && !isNaN(value) && parseFloat(value) >= 0;
+            });
+        }
+
+        // Add tooltips for better UX (simple implementation)
+        function addTooltip(element, text) {
+            element.setAttribute('title', text);
+        }
+
+        // Initialize tooltips
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add tooltips to calculator inputs
+            const medicareRateField = document.getElementById('medicareRate');
+            if (medicareRateField) {
+                addTooltip(medicareRateField, 'Enter the Medicare reimbursement rate for BPH procedures in your region');
+            }
+            
+            const casesField = document.getElementById('casesPerMonth');
+            if (casesField) {
+                addTooltip(casesField, 'Estimate monthly case volume based on practice size and patient population');
+            }
+        });
+    </script>
+</body>
+</html>
